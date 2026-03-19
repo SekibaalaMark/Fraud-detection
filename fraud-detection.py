@@ -69,3 +69,17 @@ for k in k_values: # Iterate over each value of k in the defined range to evalua
   
 optimal_k = k_values[np.argmax(accuracies)] # Find the value of k that corresponds to the highest mean accuracy score in the 'accuracies' list by using np.argmax to get the index of the maximum value and then using that index to retrieve the corresponding k value from the 'k_values' range, which will be the optimal number of neighbors for the KNN model based on cross-validation performance
 print(optimal_k) # Print the optimal value of k (number of neighbors) that achieved the highest mean accuracy score during cross-validation to the console, which can be used to train the final KNN model for fraud detection with the best performance.
+
+#plotting the accuracies for different values of k to visualize the performance of the KNN model across different numbers of neighbors
+plt.figure(figsize=(10,6)) # Set the figure size for the plot to 10 inches wide and 6 inches tall to ensure that the plot is large enough to clearly display the accuracy scores for different values of k
+plt.plot(k_values,accuracies,marker="o") # Create a line plot of the mean accuracy scores (accuracies) for each value of k (k_values) with markers at each point to visualize the performance of the KNN model across different numbers of neighbors
+plt.title("KNN Accuracy for Different Values of K") # Set the title of the plot to "KNN Accuracy for Different Values of K" to indicate that the plot shows the accuracy of the KNN model for different numbers of neighbors
+plt.xlabel("Number of Neighbors (K)") # Set the x-axis label to "Number of Neighbors (K)" to indicate that the x-axis represents the different values of k (number of neighbors) evaluated in the KNN model
+plt.ylabel("Mean Accuracy") # Set the y-axis label to "Mean Accuracy" to indicate that the y-axis represents the mean accuracy scores obtained from cross-validation for each value of k
+plt.xticks(k_values) # Set the x-axis ticks to be the values of k (k_values) to ensure that each value of k is clearly marked on the x-axis for better visualization of the accuracy scores for different numbers of neighbors
+plt.grid() # Add a grid to the plot for better readability and to help visualize the accuracy scores for different values of k more clearly
+plt.show() # Display the plot to visualize the performance of the KNN model across different numbers of neighbors (k) and to identify the optimal k value that achieves the highest mean accuracy score during cross-validation.
+
+
+
+
