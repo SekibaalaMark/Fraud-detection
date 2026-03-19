@@ -19,3 +19,9 @@ df.describe() # Get summary statistics of the dataset
 # Preprocessing the data
 df.info() # Check for missing values and data types
 df['Class'] = df['Class'].fillna(0) # Fill missing values in the 'Class' column with 0 (non-fraud)
+
+
+
+X = df.drop(columns=['Class']) #Dropped the Class Column to create the feature set
+y = df['Class'] #Target variable (fraud or non-fraud)
+
