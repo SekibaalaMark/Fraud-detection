@@ -64,3 +64,8 @@ for k in k_values: # Iterate over each value of k in the defined range to evalua
   knn = KNeighborsClassifier(n_neighbors=k) # Initialize the KNN classifier with the current value of k (number of neighbors) to be evaluated
   scores = cross_val_score(knn,X_train_scaled,y_train,cv=5,scoring="accuracy") # Perform 5-fold cross-validation on the training data (X_train_scaled and y_train) using the current KNN model and evaluate the accuracy for each fold, storing the scores in the 'scores' variable
   accuracies.append(scores.mean()) # Calculate the mean accuracy score across the 5 folds for the current value of k and append it to the 'accuracies' list to keep track of the performance of the KNN model for each number of neighbors
+  
+  
+  
+optimal_k = k_values[np.argmax(accuracies)] # Find the value of k that corresponds to the highest mean accuracy score in the 'accuracies' list by using np.argmax to get the index of the maximum value and then using that index to retrieve the corresponding k value from the 'k_values' range, which will be the optimal number of neighbors for the KNN model based on cross-validation performance
+print(optimal_k) # Print the optimal value of k (number of neighbors) that achieved the highest mean accuracy score during cross-validation to the console, which can be used to train the final KNN model for fraud detection with the best performance.
