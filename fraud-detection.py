@@ -25,3 +25,5 @@ df['Class'] = df['Class'].fillna(0) # Fill missing values in the 'Class' column 
 X = df.drop(columns=['Class']) #Dropped the Class Column to create the feature set
 y = df['Class'] #Target variable (fraud or non-fraud)
 
+X_train , X_test , y_train , y_test = train_test_split(X,y,test_size=0.3,random_state=42,stratify=y)# Split the data into training and testing sets (70% train, 30% test) with stratification to maintain class distribution
+
