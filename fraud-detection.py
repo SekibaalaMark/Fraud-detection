@@ -17,3 +17,5 @@ df.Class.value_counts() # Check the distribution of classes (fraud vs non-fraud)
 df.describe() # Get summary statistics of the dataset
 
 # Preprocessing the data
+df.info() # Check for missing values and data types
+df['Class'] = df['Class'].fillna(0) # Fill missing values in the 'Class' column with 0 (non-fraud)
