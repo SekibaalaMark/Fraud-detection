@@ -54,3 +54,13 @@ print(f"Precision: {precision}") # Print the precision of the model to the conso
 print(f"Recall: {recall}") # Print the recall of the model to the console
 print(f"F1 Score: {f1}") # Print the F1 score of the model to the console
 print(conf_matrix) # Print the confusion matrix to the console, which shows the counts of true positives, true negatives, false positives, and false negatives for the model's predictions on the test data
+
+
+# Perform cross-validation to evaluate the model's performance more robustly
+from sklearn.model_selection import cross_val_score # Import the cross_val_score function from scikit-learn to perform cross-validation
+k_values = range(1,31) # Define a range of k values (number of neighbors) to evaluate the KNN model's performance across different values of k, from 1 to 30
+accuracies = [] # Initialize an empty list to store the mean accuracy scores for each value of k during cross-validation
+for k in k_values: # Iterate over each value of k in the defined range to evaluate the KNN model's performance for each number of neighbors
+  knn = KNeighborsClassifier(n_neighbors=k) # Initialize the KNN classifier with the current value of k (number of neighbors) to be evaluated
+  scores = cross_val_score(knn,X_train_scaled,y_train,cv=5,scoring="accuracy") # Perform 5-fold cross-validation on the training data (X_train_scaled and y_train) using the current KNN model and evaluate the accuracy for each fold, storing the scores in the 'scores' variable
+  accuracies.append(scores.mean()) # Calculate the mean accuracy score across the 5 folds for the current value of k and append it to the 'accuracies' list to keep track of the performance of the KNN model for each number of neighbors
