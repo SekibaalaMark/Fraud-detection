@@ -83,3 +83,12 @@ plt.show() # Display the plot to visualize the performance of the KNN model acro
 
 
 
+# Train the final KNN model using the optimal k value obtained from cross-validation and evaluate its performance on the test set
+knn = KNeighborsClassifier(n_neighbors=optimal_k) # Initialize the KNN classifier with the optimal number of neighbors (optimal_k) that was determined from cross-validation to train the final model for fraud detection
+knn.fit(X_train_scaled,y_train) # Fit the KNN model to the scaled training data (X_train_scaled and y_train) using the optimal number of neighbors to learn the patterns in the training set for fraud detection
+y_pred = knn.predict(X_test_scaled) # Predict the class labels for the scaled test data (X_test_scaled) using the trained KNN model with the optimal number of neighbors to evaluate its performance on unseen data
+
+
+
+
+
