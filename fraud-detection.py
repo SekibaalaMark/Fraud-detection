@@ -39,3 +39,18 @@ pd.DataFrame(X_train_scaled).head() # Check the first few rows of the scaled tra
 knn = KNeighborsClassifier(n_neighbors=5) # Initialize the KNN classifier with 5 neighbors (you can experiment with different values of k to find the best performance)
 knn.fit(X_train_scaled,y_train) # Fit the KNN model to the scaled training data (learn the patterns in the training set)
 y_pred = knn.predict(X_test_scaled) # Predict the class labels for the scaled test data using the trained KNN model
+
+ 
+
+# Evaluate the model's performance using various metrics 
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, confusion_matrix, classification_report # Import evaluation metrics from scikit-learn
+accuracy = round(accuracy_score(y_test,y_pred),5) # Calculate the accuracy of the model by comparing the true labels (y_test) with the predicted labels (y_pred) and round it to 5 decimal places
+precision = round(precision_score(y_test,y_pred,average="weighted"),5) # Calculate the precision of the model, which is the ratio of true positives to the sum of true positives and false positives, using weighted average to account for class imbalance, and round it to 5 decimal places
+recall = round(recall_score(y_test,y_pred,average="weighted"),5) # Calculate the recall of the model, which is the ratio of true positives to the sum of true positives and false negatives, using weighted average to account for class imbalance, and round it to 5 decimal places
+f1 = round(f1_score(y_test,y_pred),5) # Calculate the F1 score of the model, which is the harmonic mean of precision and recall, by comparing the true labels (y_test) with the predicted labels (y_pred) and round it to 5 decimal places
+conf_matrix = confusion_matrix(y_test,y_pred) # Generate the confusion matrix, which is a table that summarizes the performance of the classification model by showing the counts of true positives, true negatives, false positives, and false negatives, by comparing the true labels (y_test) with the predicted labels (y_pred)
+print(f"Accuarcy: {accuracy}") # Print the accuracy of the model to the console
+print(f"Precision: {precision}") # Print the precision of the model to the console
+print(f"Recall: {recall}") # Print the recall of the model to the console
+print(f"F1 Score: {f1}") # Print the F1 score of the model to the console
+print(conf_matrix) # Print the confusion matrix to the console, which shows the counts of true positives, true negatives, false positives, and false negatives for the model's predictions on the test data
