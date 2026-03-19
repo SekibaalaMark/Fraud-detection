@@ -9,3 +9,11 @@ from sklearn.preprocessing import StandardScaler
 
 # Load the dataset
 df = pd.read_csv('creditcard.csv')
+
+
+#Getting an overview of the dataset
+df.head() # Check the first few rows of the dataset
+df.Class.value_counts() # Check the distribution of classes (fraud vs non-fraud)
+df.describe() # Get summary statistics of the dataset
+
+# Preprocessing the data
