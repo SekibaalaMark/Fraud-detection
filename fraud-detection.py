@@ -31,3 +31,11 @@ X_train , X_test , y_train , y_test = train_test_split(X,y,test_size=0.3,random_
 scaler = StandardScaler() # Initialize the StandardScaler to standardize the features (mean=0, variance=1)
 X_train_scaled = scaler.fit_transform(X_train) # Fit the scaler on the training data and transform it to scale the features
 X_test_scaled = scaler.transform(X_test) # Transform the test data using the same scaler (do not fit again to avoid data leakage)
+
+
+pd.DataFrame(X_train_scaled).head() # Check the first few rows of the scaled training data to verify that the features have been standardized
+
+# Train a K-Nearest Neighbors (KNN) classifier
+knn = KNeighborsClassifier(n_neighbors=5) # Initialize the KNN classifier with 5 neighbors (you can experiment with different values of k to find the best performance)
+knn.fit(X_train_scaled,y_train) # Fit the KNN model to the scaled training data (learn the patterns in the training set)
+y_pred = knn.predict(X_test_scaled) # Predict the class labels for the scaled test data using the trained KNN model
