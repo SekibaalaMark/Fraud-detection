@@ -90,5 +90,17 @@ y_pred = knn.predict(X_test_scaled) # Predict the class labels for the scaled te
 
 
 
+# Evaluate the final model's performance using various metrics and print the results to the console
+accuracy = round(accuracy_score(y_test,y_pred),5) # Calculate the accuracy of the final KNN model by comparing the true labels (y_test) with the predicted labels (y_pred) and round it to 5 decimal places for better readability in the output
+precision = round(precision_score(y_test,y_pred,average="weighted"),5) # Calculate the precision of the final KNN model, which is the ratio of true positives to the sum of true positives and false positives, using weighted average to account for class imbalance in the dataset, and round it to 5 decimal places for better readability in the output
+recall = round(recall_score(y_test,y_pred,average="weighted"),5) # Calculate the recall of the final KNN model, which is the ratio of true positives to the sum of true positives and false negatives, using weighted average to account for class imbalance in the dataset, and round it to 5 decimal places for better readability in the output
+f1 = round(f1_score(y_test,y_pred),5) # Calculate the F1 score of the final KNN model, which is the harmonic mean of precision and recall, by comparing the true labels (y_test) with the predicted labels (y_pred) and round it to 5 decimal places for better readability in the output
+conf_matrix = confusion_matrix(y_test,y_pred) # Generate the confusion matrix for the final KNN model, which is a table that summarizes the performance of the classification model by showing the counts of true positives, true negatives, false positives, and false negatives, by comparing the true labels (y_test) with the predicted labels (y_pred) for the test data
+print(f"Accuracy: {accuracy}") 
+print(f"Precision: {precision}")
+print(f"Recall: {recall}")
+print(f"F1 Score: {f1}")
+print(conf_matrix)
+
 
 
