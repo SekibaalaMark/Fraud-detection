@@ -1,3 +1,78 @@
-Credit Card Fraud Detection using KNN ClassifierThis repository contains a Python implementation of a K-Nearest Neighbors (KNN) machine learning model to detect fraudulent transactions in a highly imbalanced dataset.📌 Project OverviewThe goal of this project is to classify credit card transactions as either Fraudulent (1) or Genuine (0). Because the dataset is heavily skewed toward genuine transactions, the project emphasizes preprocessing, feature scaling, and performance evaluation using metrics beyond simple accuracy.🛠️ Data Preprocessing & PipelineThe following steps were taken to ensure the KNN model performs optimally:Handling Missing Values: Null values in the Class column were filled with 0 (non-fraud) to maintain dataset integrity.Stratified Splitting: Used a 70/30 train-test split with stratify=y to ensure that both the training and testing sets have a proportional representation of fraud cases.Feature Scaling: Since KNN is a distance-based algorithm, I utilized StandardScaler to normalize features (mean=0, variance=1). This prevents features with large ranges from dominating the distance calculations.🧪 Hyperparameter TuningTo find the most effective model, I performed 5-fold Cross-Validation across a range of $k$ values ($k=1$ to $30$).Optimal K: The script automatically identifies the optimal_k that yields the highest mean accuracy.Visualization: A plot is generated to visualize the relationship between the number of neighbors and the model's accuracy, helping to identify the point where the model stabilizes.📊 Evaluation MetricsGiven the class imbalance, the following metrics are calculated and printed:Accuracy: Overall correctness of the model.Precision (Weighted): The ability of the classifier not to label a negative sample as positive.Recall (Weighted): The ability of the classifier to find all positive samples.F1 Score: The harmonic mean of precision and recall.Confusion Matrix: A detailed breakdown of True Positives, True Negatives, False Positives, and False Negatives.🚀 How to RunClone the Repository:Bashgit clone https://github.com/sekibaala-mark/Fraud-detection.git
-Install Dependencies:Bashpip install pandas numpy matplotlib scikit-learn
-Add Dataset:Ensure the creditcard.csv file is located in the root directory.Execute:Run the notebook or Python script in VS Code or any IDE.
+# 💳 Credit Card Fraud Detection using KNN Classifier
+
+This repository contains a Python implementation of a **K-Nearest Neighbors (KNN)** machine learning model to detect fraudulent transactions in a highly imbalanced dataset.
+
+---
+
+## 📌 Project Overview
+
+The goal of this project is to classify credit card transactions as either:
+
+- **Fraudulent (1)**
+- **Genuine (0)**
+
+Due to the imbalance in the dataset (very few fraud cases), the project emphasizes:
+
+- Data preprocessing  
+- Feature scaling  
+- Reliable evaluation metrics beyond accuracy  
+
+---
+
+## 🛠️ Data Preprocessing & Pipeline
+
+The following steps were applied to improve model performance:
+
+### 1. Handling Missing Values
+- Missing values in the `Class` column were filled with **0 (non-fraud)**  
+
+### 2. Stratified Train-Test Split
+- Used a **70/30 split** with `stratify=y`  
+- Ensures equal representation of fraud cases in both training and testing datasets  
+
+### 3. Feature Scaling
+- Applied **StandardScaler**  
+- Standardizes features to:  
+  - Mean = 0  
+  - Variance = 1  
+- Important because KNN relies on distance calculations  
+
+---
+
+## 🧪 Hyperparameter Tuning
+
+- Used **5-Fold Cross-Validation**  
+- Tested values of **K from 1 to 30**  
+
+### Results:
+- Automatically selects the **optimal K**  
+- Generates a plot showing:  
+  - Number of neighbors vs accuracy  
+  - Helps identify model stability  
+
+---
+
+## 📊 Evaluation Metrics
+
+Because of class imbalance, multiple metrics were used:
+
+- **Accuracy** – Overall correctness  
+- **Precision (Weighted)** – Measures false positives  
+- **Recall (Weighted)** – Measures false negatives  
+- **F1 Score** – Balance between precision and recall  
+- **Confusion Matrix** – Shows:  
+  - True Positives  
+  - True Negatives  
+  - False Positives  
+  - False Negatives  
+
+---
+
+## 🚀 How to Run
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/sekibaala-mark/Fraud-detection.git
+cd Fraud-detection
+
+
